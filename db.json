@@ -1,0 +1,60 @@
+{
+  "todoLists": [
+    {
+      "id": 0,
+      "listName": "groceries"
+    },
+    {
+      "id": 1,
+      "listName": "yard work"
+    },
+    {
+      "id": 2,
+      "listName": "blog post"
+    }
+  ],
+  "todos": [
+    {
+      "id": 0,
+      "listId": 0,
+      "todo": "milk",
+      "complete": false
+    },
+    {
+      "id": 1,
+      "listId": 0,
+      "todo": "eggs",
+      "complete": false
+    },
+    {
+      "id": 2,
+      "listId": 0,
+      "todo": "cereal",
+      "complete": false
+    },
+    {
+      "id": 3,
+      "listId": 1,
+      "todo": "rake leaves",
+      "complete": false
+    },
+    {
+      "id": 4,
+      "listId": 1,
+      "todo": "weed garden beds",
+      "complete": false
+    },
+    {
+      "id": 5,
+      "listId": 2,
+      "todo": "code project",
+      "complete": false
+    },
+    {
+      "id": 6,
+      "listId": 2,
+      "todo": "write copy",
+      "complete": false
+    }
+  ]
+}
