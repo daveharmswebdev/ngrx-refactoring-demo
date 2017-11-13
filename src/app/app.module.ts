@@ -31,7 +31,7 @@ export const reducers: ActionReducerMap<IAppState> = {
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot( reducers, { initialState: INITIAL_STATE}),
+    StoreModule.forRoot( reducers, { initialState: INITIAL_STATE } ),
     EffectsModule.forRoot([ ListEffects ]),
     StoreDevtoolsModule.instrument({ maxAge: 25 })
   ],

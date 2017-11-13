@@ -16,7 +16,6 @@ import * as ListActions from './actions/list.actions';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  todoLists: Observable<ITodoList[]>;
   todoStoreLists$: Observable<ITodoList[]>;
   todos: Observable<ITodo[]>;
   currentList: number = null;
@@ -28,60 +27,58 @@ export class AppComponent implements OnInit {
   }
 
   constructor(
-    private todoService: TodoService,
     private store: Store<IAppState>
   ) {
     this.todoStoreLists$ = this.store.select('todoLists');
   }
 
   ngOnInit() {
-    this.todoLists = this.todoService.getTodoLists();
     this.store.dispatch(new ListActions.FetchList());
   }
 
-  getTodos(list: ITodoList) {
-    this.todos = this.todoService.getTodosByListId(list.id);
-    this.todos.subscribe(todos => {
-      this.currentList = todos.length ? todos[0].listId : null;
-    });
-  }
+  // getTodos(list: ITodoList) {
+  //   this.todos = this.todoService.getTodosByListId(list.id);
+  //   this.todos.subscribe(todos => {
+  //     this.currentList = todos.length ? todos[0].listId : null;
+  //   });
+  // }
 
-  deleteTodo(todo: ITodo) {
-    const currentList = todo.listId;
-    this.todoService.deleteTodo(todo.id)
-    .then((response: any) => {
-      this.todos = this.todoService.getTodosByListId(todo.listId);
-    });
-  }
+  // deleteTodo(todo: ITodo) {
+  //   const currentList = todo.listId;
+  //   this.todoService.deleteTodo(todo.id)
+  //   .then((response: any) => {
+  //     this.todos = this.todoService.getTodosByListId(todo.listId);
+  //   });
+  // }
 
-  editTodo(todo) {
-    this.todoBeingEditted = Object.assign({}, todo);
-  }
+  // editTodo(todo) {
+  //   this.todoBeingEditted = Object.assign({}, todo);
+  // }
 
-  submitEdit(todo) {
-    if (this.creating) {
-      this.todoService.postNewTodo(todo)
-      .then((response: any) => {
-        this.todoBeingEditted = null;
-        this.creating = false;
-        this.todos = this.todoService.getTodosByListId(response.listId);
-      });
-    } else {
-      this.todoService.putTodo(todo)
-      .then((response: any) => {
-        this.todoBeingEditted = null;
-        this.todos = this.todoService.getTodosByListId(response.listId);
-      });
-    }
-  }
+  // submitEdit(todo) {
+  //   if (this.creating) {
+  //     this.todoService.postNewTodo(todo)
+  //     .then((response: any) => {
+  //       this.todoBeingEditted = null;
+  //       this.creating = false;
+  //       this.todos = this.todoService.getTodosByListId(response.listId);
+  //     });
+  //   } else {
+  //     this.todoService.putTodo(todo)
+  //     .then((response: any) => {
+  //       this.todoBeingEditted = null;
+  //       this.todos = this.todoService.getTodosByListId(response.listId);
+  //     });
+  //   }
+  // }
 
-  addNewTodo(todos) {
-    this.creating = true;
-    this.todoBeingEditted = {
-      id: null,
-      listId: this.currentList,
-      todo: '',
-      complete: false
-    };
-  }
+  // addNewTodo(todos) {
+  //   this.creating = true;
+  //   this.todoBeingEditted = {
+  //     id: null,
+  //     listId: this.currentList,
+  //     todo: '',
+  //     complete: false
+  //   };
+  // }
 }
