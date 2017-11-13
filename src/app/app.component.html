@@ -6,11 +6,11 @@
 </div>
 <h2>Here are some links to help you start: </h2>
 <ul>
-  <li *ngFor="let list of todoStoreLists$ | async" (click)="getTodos(list)">{{list.listName}}</li>
+  <li *ngFor="let list of todoStoreLists$ | async" (click)="selectList(list)">{{list.listName}}</li>
 </ul>
-<div *ngIf="todos | async">
+<div *ngIf="todos$ | async">
   <ul>
-    <li *ngFor="let todo of todos | async">
+    <li *ngFor="let todo of todos$ | async">
       {{todo.todo}}
       <button type="button" (click)="editTodo(todo)" [disabled]="creating">Edit</button>
       <button type="button" (click)="deleteTodo(todo)" [disabled]="creating">Delete</button>

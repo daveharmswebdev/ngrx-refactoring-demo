@@ -8,7 +8,7 @@ import { ITodo } from './models/todo';
 // ngrx
 import { Store } from '@ngrx/store';
 import { IAppState } from './models/appState';
-import * as ListActions from './actions/list.actions';
+import * as ListActions from './actions/todo-list.actions';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +17,7 @@ import * as ListActions from './actions/list.actions';
 })
 export class AppComponent implements OnInit {
   todoStoreLists$: Observable<ITodoList[]>;
-  todos: Observable<ITodo[]>;
+  todos$: Observable<ITodo[]>;
   currentList: number = null;
   todoBeingEditted: ITodo = null;
   creating = false;
@@ -30,10 +30,15 @@ export class AppComponent implements OnInit {
     private store: Store<IAppState>
   ) {
     this.todoStoreLists$ = this.store.select('todoLists');
+    this.todos$ = this.store.select('todos');
   }
 
   ngOnInit() {
     this.store.dispatch(new ListActions.FetchList());
+  }
+
+  selectList(list: ITodoList) {
+    this.store.dispatch(new ListActions.SelectList(list.id));
   }
 
   // getTodos(list: ITodoList) {

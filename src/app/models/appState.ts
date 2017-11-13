@@ -3,7 +3,7 @@ import { ITodo } from './todo';
 
 export interface IAppState {
   todoLists: ITodoList[];
-  currentTodoList: ITodoList;
+  currentTodoList: number;
   todos: ITodo[];
 }
 
