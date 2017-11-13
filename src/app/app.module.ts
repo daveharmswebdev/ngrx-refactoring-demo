@@ -9,8 +9,17 @@ import { TodoService } from './todo.service';
 // ngrx
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { INITIAL_STATE } from '../models/appState';
-import { storeReducer } from '../reducers/store.reducer';
+import { INITIAL_STATE, IAppState } from '../models';
+import { todoListsReducer } from '../reducers/todo-lists.reducer';
+import { ActionReducerMap } from '@ngrx/store/src/models';
+import { todosReducer } from '../reducers/todos.reducer';
+import { currentListReducer } from '../reducers/current-list.reducer';
+
+export const reducers: ActionReducerMap<IAppState> = {
+  todoLists: todoListsReducer,
+  currentTodoList: currentListReducer,
+  todos: todosReducer
+};
 
 @NgModule({
   declarations: [
@@ -20,7 +29,7 @@ import { storeReducer } from '../reducers/store.reducer';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot({ storeReducer }),
+    StoreModule.forRoot( reducers, { initialState: INITIAL_STATE}),
     StoreDevtoolsModule.instrument({ maxAge: 25 })
   ],
   providers: [TodoService],

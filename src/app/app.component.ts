@@ -16,6 +16,7 @@ import { IAppState } from '../models/appState';
 })
 export class AppComponent implements OnInit {
   todoLists: Observable<ITodoList[]>;
+  todoStoreLists$: Observable<ITodoList[]>;
   todos: Observable<ITodo[]>;
   currentList: number = null;
   todoBeingEditted: ITodo = null;
@@ -28,10 +29,11 @@ export class AppComponent implements OnInit {
   constructor(
     private todoService: TodoService,
     private store: Store<IAppState>
-  ) {}
+  ) {
+    this.todoStoreLists$ = this.store.select('todoLists');
+  }
 
   ngOnInit() {
-    console.log(this.creating);
     this.todoLists = this.todoService.getTodoLists();
   }
 
