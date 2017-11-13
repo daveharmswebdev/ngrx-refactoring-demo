@@ -5,6 +5,10 @@ import { TodoService } from './todo.service';
 import { ITodoList } from '../models/todoList';
 import { ITodo } from '../models/todo';
 
+// ngrx
+import { Store } from '@ngrx/store';
+import { IAppState } from '../models/appState';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -21,7 +25,10 @@ export class AppComponent implements OnInit {
     return this.creating ? 'Create Todo' : 'Submit Edit';
   }
 
-  constructor(private todoService: TodoService) {}
+  constructor(
+    private todoService: TodoService,
+    private store: Store<IAppState>
+  ) {}
 
   ngOnInit() {
     console.log(this.creating);
