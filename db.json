@@ -17,19 +17,13 @@
     {
       "id": 0,
       "listId": 0,
-      "todo": "milk",
+      "todo": "organic eggs",
       "complete": false
     },
     {
       "id": 1,
       "listId": 0,
-      "todo": "eggs",
-      "complete": false
-    },
-    {
-      "id": 2,
-      "listId": 0,
-      "todo": "cereal",
+      "todo": "more eggs",
       "complete": false
     },
     {
@@ -39,21 +33,21 @@
       "complete": false
     },
     {
-      "id": 4,
-      "listId": 1,
-      "todo": "weed garden beds",
-      "complete": false
-    },
-    {
-      "id": 5,
-      "listId": 2,
-      "todo": "code project",
-      "complete": false
-    },
-    {
       "id": 6,
       "listId": 2,
-      "todo": "write copy",
+      "todo": "write copies",
+      "complete": false
+    },
+    {
+      "id": 7,
+      "listId": 0,
+      "todo": "milk",
+      "complete": false
+    },
+    {
+      "id": 8,
+      "listId": 2,
+      "todo": "make bitbucket repo",
       "complete": false
     }
   ]

@@ -15,10 +15,22 @@ export class TodoService {
   }
 
   getTodosByListId(listId) {
-    const params = new HttpParams().append('listId', listId);
+    const params = new HttpParams().set('listId', listId);
 
     // hates string interpolation
     return this.http.get<ITodo[]>(this.url + '/todos', { params });
+  }
+
+  deleteTodo(id) {
+    return this.http.delete(this.url + '/todos/' + id).toPromise();
+  }
+
+  putTodo(todo) {
+    return this.http.put(this.url + '/todos/' + todo.id, todo).toPromise();
+  }
+
+  postNewTodo(todo) {
+    return this.http.post(this.url + '/todos', todo).toPromise();
   }
 
 }

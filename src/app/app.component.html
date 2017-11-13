@@ -1,14 +1,28 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    Welcome to {{title}}!
+    Welcome to Ngrx Todo List!
   </h1>
 </div>
 <h2>Here are some links to help you start: </h2>
 <ul>
   <li *ngFor="let list of todoLists | async" (click)="getTodos(list)">{{list.listName}}</li>
 </ul>
-<ul *ngIf="todos | async">
-  <li *ngFor="let todo of todos | async">{{todo.todo}}</li>
-</ul>
+<div *ngIf="todos | async">
+  <ul>
+    <li *ngFor="let todo of todos | async">
+      {{todo.todo}}
+      <button type="button" (click)="editTodo(todo)" [disabled]="creating">Edit</button>
+      <button type="button" (click)="deleteTodo(todo)" [disabled]="creating">Delete</button>
+    </li>
+  </ul>
+  <button type="button" (click)="addNewTodo()">Add Todo</button>
+</div>
 
+<form *ngIf="todoBeingEditted" (submit)="submitEdit(todoBeingEditted)">
+  <label for="editTodoName">
+    Todo:
+    <input [(ngModel)]="todoBeingEditted.todo" type="text" id="editTodoName" name="todo">
+  </label>
+  <button type="submit">{{editButtonText}}</button>
+</form>
