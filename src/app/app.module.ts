@@ -9,11 +9,13 @@ import { TodoService } from './todo.service';
 // ngrx
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { INITIAL_STATE, IAppState } from '../models';
-import { todoListsReducer } from '../reducers/todo-lists.reducer';
+import { EffectsModule } from '@ngrx/effects';
 import { ActionReducerMap } from '@ngrx/store/src/models';
-import { todosReducer } from '../reducers/todos.reducer';
-import { currentListReducer } from '../reducers/current-list.reducer';
+import { INITIAL_STATE, IAppState } from './models';
+import { todoListsReducer } from './reducers/todo-lists.reducer';
+import { todosReducer } from './reducers/todos.reducer';
+import { currentListReducer } from './reducers/current-list.reducer';
+import { ListEffects } from './effects/list.effects';
 
 export const reducers: ActionReducerMap<IAppState> = {
   todoLists: todoListsReducer,
@@ -30,6 +32,7 @@ export const reducers: ActionReducerMap<IAppState> = {
     HttpClientModule,
     FormsModule,
     StoreModule.forRoot( reducers, { initialState: INITIAL_STATE}),
+    EffectsModule.forRoot([ ListEffects ]),
     StoreDevtoolsModule.instrument({ maxAge: 25 })
   ],
   providers: [TodoService],

@@ -2,12 +2,13 @@ import { Observable } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
 
 import { TodoService } from './todo.service';
-import { ITodoList } from '../models/todoList';
-import { ITodo } from '../models/todo';
+import { ITodoList } from './models/todoList';
+import { ITodo } from './models/todo';
 
 // ngrx
 import { Store } from '@ngrx/store';
-import { IAppState } from '../models/appState';
+import { IAppState } from './models/appState';
+import * as ListActions from './actions/list.actions';
 
 @Component({
   selector: 'app-root',
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.todoLists = this.todoService.getTodoLists();
+    this.store.dispatch(new ListActions.FetchList());
   }
 
   getTodos(list: ITodoList) {
