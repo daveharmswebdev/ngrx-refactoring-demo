@@ -36,6 +36,10 @@ export class AppComponent implements OnInit {
     this.store.dispatch(new ListActions.FetchList());
   }
 
+  selectList(list: ITodoList) {
+    this.store.dispatch(new ListActions.SelectList(list.id));
+  }
+
   // getTodos(list: ITodoList) {
   //   this.todos = this.todoService.getTodosByListId(list.id);
   //   this.todos.subscribe(todos => {

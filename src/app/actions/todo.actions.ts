@@ -7,7 +7,7 @@ export const FETCH_TODOS_SUCCESS = 'FETCH_TODO_SUCCESS';
 export class FetchTodos implements Action {
   readonly type = FETCH_TODOS;
 
-  constructor(public payload: number) {};
+  constructor(public payload: number) {}
 }
 
 export class FetchTodosSuccess implements Action {

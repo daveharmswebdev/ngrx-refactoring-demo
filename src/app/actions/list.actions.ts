@@ -19,7 +19,7 @@ export class FetchListSuccess implements Action {
 export class SelectList implements Action {
   readonly type = SELECT_LIST;
 
-  constructor(public payload: ITodoList) {}
+  constructor(public payload: number) {}
 }
 
 export type All
