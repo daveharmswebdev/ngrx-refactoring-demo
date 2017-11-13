@@ -10,6 +10,7 @@ import { TodoService } from './todo.service';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { INITIAL_STATE } from '../models/appState';
+import { storeReducer } from '../reducers/store.reducer';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { INITIAL_STATE } from '../models/appState';
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({ storeReducer }),
     StoreDevtoolsModule.instrument({ maxAge: 25 })
   ],
   providers: [TodoService],
