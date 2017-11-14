@@ -9,6 +9,7 @@ import { ITodo } from './models/todo';
 import { Store } from '@ngrx/store';
 import { IAppState } from './models/appState';
 import * as ListActions from './actions/todo-list.actions';
+import * as TodoActions from './actions/todo-crud.actions';
 
 @Component({
   selector: 'app-root',
@@ -56,26 +57,19 @@ export class AppComponent implements OnInit {
   //   });
   // }
 
-  // editTodo(todo) {
-  //   this.todoBeingEditted = Object.assign({}, todo);
-  // }
+  editTodo(todo) {
+    this.todoBeingEditted = Object.assign({}, todo);
+  }
 
-  // submitEdit(todo) {
-  //   if (this.creating) {
-  //     this.todoService.postNewTodo(todo)
-  //     .then((response: any) => {
-  //       this.todoBeingEditted = null;
-  //       this.creating = false;
-  //       this.todos = this.todoService.getTodosByListId(response.listId);
-  //     });
-  //   } else {
-  //     this.todoService.putTodo(todo)
-  //     .then((response: any) => {
-  //       this.todoBeingEditted = null;
-  //       this.todos = this.todoService.getTodosByListId(response.listId);
-  //     });
-  //   }
-  // }
+  submitEdit(todo) {
+    if (this.creating) {
+      this.store.dispatch(new TodoActions.EditTodo(todo));
+      this.todoBeingEditted = null;
+    } else {
+      this.store.dispatch(new TodoActions.EditTodo(todo));
+      this.todoBeingEditted = null;
+    }
+  }
 
   // addNewTodo(todos) {
   //   this.creating = true;

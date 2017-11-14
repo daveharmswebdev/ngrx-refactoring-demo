@@ -17,13 +17,13 @@
     {
       "id": 0,
       "listId": 0,
-      "todo": "organic eggs",
+      "todo": "organic twinkies",
       "complete": false
     },
     {
       "id": 1,
       "listId": 0,
-      "todo": "more eggs",
+      "todo": "more steak and eggs",
       "complete": false
     },
     {
@@ -41,7 +41,7 @@
     {
       "id": 7,
       "listId": 0,
-      "todo": "milk",
+      "todo": "wine and roses",
       "complete": false
     },
     {
