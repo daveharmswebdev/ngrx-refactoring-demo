@@ -19,7 +19,7 @@ import * as TodoActions from './actions/todo.actions';
 export class AppComponent implements OnInit {
   todoStoreLists$: Observable<ITodoList[]>;
   todos$: Observable<ITodo[]>;
-  currentList: number = null;
+  currentList: Observable<number>;
   todoBeingEditted: ITodo = null;
   creating = false;
 
@@ -32,6 +32,7 @@ export class AppComponent implements OnInit {
   ) {
     this.todoStoreLists$ = this.store.select('todoLists');
     this.todos$ = this.store.select('todos');
+    this.currentList = this.store.select('currentTodoList');
   }
 
   ngOnInit() {
@@ -42,20 +43,9 @@ export class AppComponent implements OnInit {
     this.store.dispatch(new ListActions.SelectList(list.id));
   }
 
-  // getTodos(list: ITodoList) {
-  //   this.todos = this.todoService.getTodosByListId(list.id);
-  //   this.todos.subscribe(todos => {
-  //     this.currentList = todos.length ? todos[0].listId : null;
-  //   });
-  // }
-
-  // deleteTodo(todo: ITodo) {
-  //   const currentList = todo.listId;
-  //   this.todoService.deleteTodo(todo.id)
-  //   .then((response: any) => {
-  //     this.todos = this.todoService.getTodosByListId(todo.listId);
-  //   });
-  // }
+  deleteTodo(todo) {
+    this.store.dispatch(new TodoActions.DeleteTodo(todo));
+  }
 
   editTodo(todo) {
     this.todoBeingEditted = Object.assign({}, todo);
@@ -76,7 +66,7 @@ export class AppComponent implements OnInit {
     this.creating = true;
     this.todoBeingEditted = {
       id: null,
-      listId: this.currentList,
+      listId: null,
       todo: '',
       complete: false
     };
