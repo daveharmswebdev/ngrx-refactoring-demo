@@ -16,6 +16,7 @@ import { todoListsReducer } from './reducers/todo-lists.reducer';
 import { todosReducer } from './reducers/todos.reducer';
 import { currentListReducer } from './reducers/current-list.reducer';
 import { ListEffects } from './effects/list.effects';
+import { TodoEffects } from './effects/todo.effects';
 
 export const reducers: ActionReducerMap<IAppState> = {
   todoLists: todoListsReducer,
@@ -32,7 +33,7 @@ export const reducers: ActionReducerMap<IAppState> = {
     HttpClientModule,
     FormsModule,
     StoreModule.forRoot( reducers, { initialState: INITIAL_STATE } ),
-    EffectsModule.forRoot([ ListEffects ]),
+    EffectsModule.forRoot([ ListEffects, TodoEffects ]),
     StoreDevtoolsModule.instrument({ maxAge: 25 })
   ],
   providers: [TodoService],
