@@ -1,6 +1,6 @@
 import { ITodoList } from '../models';
 
-import * as ListActions from '../actions/todo-list.actions';
+import * as ListActions from '../actions/list.actions';
 export type Action = ListActions.All;
 
 export function currentListReducer(state: number, action: Action) {

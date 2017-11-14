@@ -1,8 +1,8 @@
 import { ITodo } from '../models';
 import * as _ from 'lodash';
 
-import * as ListActions from '../actions/todo-list.actions';
-import * as TodoActions from '../actions/todo-crud.actions';
+import * as ListActions from '../actions/list.actions';
+import * as TodoActions from '../actions/todo.actions';
 
 function handleEditTodoSuccess(state: ITodo[], action) {
   const newState = _.cloneDeep(state);

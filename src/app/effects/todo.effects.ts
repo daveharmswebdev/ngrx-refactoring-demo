@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { TodoService } from '../todo.service';
 
-import * as TodoActions from '../actions/todo-crud.actions';
+import * as TodoActions from '../actions/todo.actions';
 export type Action = TodoActions.All;
 
 @Injectable()
