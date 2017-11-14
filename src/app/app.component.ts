@@ -8,8 +8,8 @@ import { ITodo } from './models/todo';
 // ngrx
 import { Store } from '@ngrx/store';
 import { IAppState } from './models/appState';
-import * as ListActions from './actions/todo-list.actions';
-import * as TodoActions from './actions/todo-crud.actions';
+import * as ListActions from './actions/list.actions';
+import * as TodoActions from './actions/todo.actions';
 
 @Component({
   selector: 'app-root',
@@ -63,21 +63,22 @@ export class AppComponent implements OnInit {
 
   submitEdit(todo) {
     if (this.creating) {
-      this.store.dispatch(new TodoActions.EditTodo(todo));
+      this.store.dispatch(new TodoActions.PostTodo(todo));
       this.todoBeingEditted = null;
+      this.creating = false;
     } else {
       this.store.dispatch(new TodoActions.EditTodo(todo));
       this.todoBeingEditted = null;
     }
   }
 
-  // addNewTodo(todos) {
-  //   this.creating = true;
-  //   this.todoBeingEditted = {
-  //     id: null,
-  //     listId: this.currentList,
-  //     todo: '',
-  //     complete: false
-  //   };
-  // }
+  addNewTodo(todos) {
+    this.creating = true;
+    this.todoBeingEditted = {
+      id: null,
+      listId: this.currentList,
+      todo: '',
+      complete: false
+    };
+  }
 }

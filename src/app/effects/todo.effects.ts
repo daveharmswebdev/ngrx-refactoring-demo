@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 
 import { TodoService } from '../todo.service';
 
-import * as TodoActions from '../actions/todo-crud.actions';
+import * as TodoActions from '../actions/todo.actions';
 export type Action = TodoActions.All;
 
 @Injectable()
@@ -22,5 +22,12 @@ export class TodoEffects {
     .switchMap(payload => this.todoService.putTodo(payload))
     .do(val => console.log(val))
     .map(todoEdit => new TodoActions.EditTodoSuccess(todoEdit));
+
+  @Effect()
+  postTodo: Observable<Action> = this.actions$
+    .ofType(TodoActions.POST_TODO)
+    .map((action: TodoActions.PostTodo) => action.payload)
+    .switchMap(payload => this.todoService.postNewTodo(payload))
+    .map(newTodo => new TodoActions.PostTodoSuccess(<any>newTodo));
 
 }

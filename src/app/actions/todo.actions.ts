@@ -4,6 +4,9 @@ import { ITodo } from '../models';
 export const EDIT_TODO = 'EDIT_TODO';
 export const EDIT_TODO_SUCCESS = 'EDIT_TODO_SUCCESS';
 
+export const POST_TODO = 'POST_TODO';
+export const POST_TODO_SUCCESS = 'POST_TODO_SUCCESS';
+
 export class EditTodo implements Action {
   readonly type = EDIT_TODO;
 
@@ -16,6 +19,20 @@ export class EditTodoSuccess implements Action {
   constructor(public payload: any) {}
 }
 
+export class PostTodo implements Action {
+  readonly type = POST_TODO;
+
+  constructor(public payload: ITodo) {}
+}
+
+export class PostTodoSuccess implements Action {
+  readonly type = POST_TODO_SUCCESS;
+
+  constructor(public payload: ITodo) {}
+}
+
 export type All
-  = EditTodo
+  = PostTodo
+  | PostTodoSuccess
+  | EditTodo
   | EditTodoSuccess;
