@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs/Rx';
 import { Component, OnInit } from '@angular/core';
 
-import { TodoService } from './todo.service';
 import { ITodoList } from './models/todoList';
 import { ITodo } from './models/todo';
 
@@ -19,7 +18,6 @@ import * as TodoActions from './actions/todo.actions';
 export class AppComponent implements OnInit {
   todoStoreLists$: Observable<ITodoList[]>;
   todos$: Observable<ITodo[]>;
-  currentList: Observable<number>;
   todoBeingEditted: ITodo = null;
   creating = false;
 
@@ -32,7 +30,6 @@ export class AppComponent implements OnInit {
   ) {
     this.todoStoreLists$ = this.store.select('todoLists');
     this.todos$ = this.store.select('todos');
-    this.currentList = this.store.select('currentTodoList');
   }
 
   ngOnInit() {

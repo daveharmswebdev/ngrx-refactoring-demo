@@ -1,4 +1,3 @@
-import { ITodoList } from '../models';
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
@@ -30,7 +29,6 @@ export class TodoEffects {
   @Effect()
   postTodo: Observable<Action> = this.actions$
     .ofType(TodoActions.POST_TODO)
-    // .map((action: TodoActions.PostTodo) => action.payload)
     .withLatestFrom(this.store.select('currentTodoList'))
     .switchMap(([action, todoList]: [TodoActions.PostTodo, number]) => this.todoService.postNewTodo({
       id: null,
