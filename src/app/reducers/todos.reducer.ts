@@ -23,6 +23,13 @@ function handleDeleteTodoSuccess(state: ITodo[], action: TodoActions.All) {
   return newState;
 }
 
+function handleUpdateCompleteStatus(state: ITodo[], action: TodoActions.UpdateCompleteStatus) {
+  const newState = _.cloneDeep(state);
+  const index = newState.findIndex(todo => todo.id === action.payload.id);
+  newState[index].complete = action.payload.complete;
+  return newState;
+}
+
 export function todosReducer(state: ITodo[], action: ListActions.All | TodoActions.All) {
   switch (action.type) {
     case ListActions.FETCH_TODOS_SUCCESS:
@@ -33,6 +40,8 @@ export function todosReducer(state: ITodo[], action: ListActions.All | TodoActio
       return handlePostTodoSuccess(state, action);
     case TodoActions.DELETE_TODO_SUCCESS:
       return handleDeleteTodoSuccess(state, action);
+    case TodoActions.UPDATE_COMPLETE_STATUS:
+      return handleUpdateCompleteStatus(state, action);
     default:
       return state;
   }

@@ -12,6 +12,7 @@
   <ul>
     <li *ngFor="let todo of todos$ | async">
       {{todo.todo}}
+      <input name="complete" type="checkbox" [ngModel]="todo.complete" (ngModelChange)="changeComplete(todo)">
       <button type="button" (click)="editTodo(todo)" [disabled]="creating">Edit</button>
       <button type="button" (click)="deleteTodo(todo)" [disabled]="creating">Delete</button>
     </li>

@@ -68,4 +68,9 @@ export class AppComponent implements OnInit {
       complete: false
     };
   }
+
+  changeComplete(todo: ITodo) {
+    todo.complete = !todo.complete;
+    this.store.dispatch(new TodoActions.UpdateCompleteStatus(todo));
+  }
 }
