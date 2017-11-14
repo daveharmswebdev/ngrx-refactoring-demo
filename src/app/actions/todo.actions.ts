@@ -10,6 +10,8 @@ export const POST_TODO_SUCCESS = 'POST_TODO_SUCCESS';
 export const DELETE_TODO = 'DELETE_TODO';
 export const DELETE_TODO_SUCCESS = 'DELETE_TODO_SUCCESS';
 
+export const UPDATE_COMPLETE_STATUS = 'UPDATE_COMPLETE_STATUS';
+
 export class EditTodo implements Action {
   readonly type = EDIT_TODO;
 
@@ -46,10 +48,17 @@ export class DeleteTodoSuccess implements Action {
   constructor(public payload: ITodo) {}
 }
 
+export class UpdateCompleteStatus implements Action {
+  readonly type = UPDATE_COMPLETE_STATUS;
+
+  constructor(public payload: ITodo) {}
+}
+
 export type All
   = PostTodo
   | PostTodoSuccess
   | EditTodo
   | EditTodoSuccess
   | DeleteTodo
-  | DeleteTodoSuccess;
+  | DeleteTodoSuccess
+  | UpdateCompleteStatus;

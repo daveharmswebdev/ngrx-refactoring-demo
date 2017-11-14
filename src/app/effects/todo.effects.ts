@@ -18,6 +18,14 @@ export class TodoEffects {
     private store: Store<IAppState>
   ) {}
 
+  @Effect({ dispatch: false })
+  updateCompleteStatus: Observable<void> = this.actions$
+    .ofType(TodoActions.UPDATE_COMPLETE_STATUS)
+    .map((action: TodoActions.UpdateCompleteStatus) => action.payload)
+    .do(val => console.log(val))
+    .switchMap(payload => this.todoService.putTodo(payload))
+    .map(response => console.log(response));
+
   @Effect()
   editTodo: Observable<Action> = this.actions$
     .ofType(TodoActions.EDIT_TODO)

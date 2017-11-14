@@ -30,13 +30,13 @@
       "id": 8,
       "listId": 2,
       "todo": "make gitlab repo",
-      "complete": false
+      "complete": true
     },
     {
       "id": 16,
       "listId": 0,
       "todo": "cheese",
-      "complete": false
+      "complete": true
     },
     {
       "id": 18,
@@ -66,7 +66,7 @@
       "id": 22,
       "listId": 2,
       "todo": "brag to friends",
-      "complete": false
+      "complete": true
     }
   ]
 }
