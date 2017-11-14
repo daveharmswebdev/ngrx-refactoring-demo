@@ -23,4 +23,11 @@ export class TodoEffects {
     .do(val => console.log(val))
     .map(todoEdit => new TodoActions.EditTodoSuccess(todoEdit));
 
+  @Effect()
+  postTodo: Observable<Action> = this.actions$
+    .ofType(TodoActions.POST_TODO)
+    .map((action: TodoActions.PostTodo) => action.payload)
+    .switchMap(payload => this.todoService.postNewTodo(payload))
+    .map(newTodo => new TodoActions.PostTodoSuccess(<any>newTodo));
+
 }
