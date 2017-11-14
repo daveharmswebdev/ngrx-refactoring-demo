@@ -17,6 +17,12 @@ function handlePostTodoSuccess(state: ITodo[], action) {
   return newState;
 }
 
+function handleDeleteTodoSuccess(state: ITodo[], action: TodoActions.All) {
+  const deletedTodo = action.payload;
+  const newState = state.filter(todo => todo.id !== deletedTodo.id);
+  return newState;
+}
+
 export function todosReducer(state: ITodo[], action: ListActions.All | TodoActions.All) {
   switch (action.type) {
     case ListActions.FETCH_TODOS_SUCCESS:
@@ -25,6 +31,8 @@ export function todosReducer(state: ITodo[], action: ListActions.All | TodoActio
       return handleEditTodoSuccess(state, action);
     case TodoActions.POST_TODO_SUCCESS:
       return handlePostTodoSuccess(state, action);
+    case TodoActions.DELETE_TODO_SUCCESS:
+      return handleDeleteTodoSuccess(state, action);
     default:
       return state;
   }

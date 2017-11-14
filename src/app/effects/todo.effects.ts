@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Effect, Actions } from '@ngrx/effects';
 import { Observable } from 'rxjs/Observable';
+import { Store } from '@ngrx/store';
 
 import { TodoService } from '../todo.service';
+import { IAppState } from '../models';
 
 import * as TodoActions from '../actions/todo.actions';
 export type Action = TodoActions.All;
@@ -12,7 +14,8 @@ export class TodoEffects {
 
   constructor(
     private actions$: Actions,
-    private todoService: TodoService
+    private todoService: TodoService,
+    private store: Store<IAppState>
   ) {}
 
   @Effect()
@@ -26,8 +29,20 @@ export class TodoEffects {
   @Effect()
   postTodo: Observable<Action> = this.actions$
     .ofType(TodoActions.POST_TODO)
-    .map((action: TodoActions.PostTodo) => action.payload)
-    .switchMap(payload => this.todoService.postNewTodo(payload))
-    .map(newTodo => new TodoActions.PostTodoSuccess(<any>newTodo));
+    .withLatestFrom(this.store.select('currentTodoList'))
+    .switchMap(([action, todoList]: [TodoActions.PostTodo, number]) => this.todoService.postNewTodo({
+      id: null,
+      listId: todoList,
+      todo: action.payload.todo,
+      complete: false
+    }).then(newTodo => new TodoActions.PostTodoSuccess(<any>newTodo)));
+
+  @Effect()
+  deleteTodo: Observable<Action> = this.actions$
+    .ofType(TodoActions.DELETE_TODO)
+    .map((action: TodoActions.DeleteTodo) => action.payload)
+    .switchMap(todo =>
+        this.todoService.deleteTodo(todo.id)
+        .then(() => new TodoActions.DeleteTodoSuccess(todo)));
 
 }

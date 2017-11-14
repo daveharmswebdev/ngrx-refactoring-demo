@@ -15,24 +15,6 @@
   ],
   "todos": [
     {
-      "id": 0,
-      "listId": 0,
-      "todo": "organic twinkies",
-      "complete": false
-    },
-    {
-      "id": 1,
-      "listId": 0,
-      "todo": "more steak and eggs",
-      "complete": false
-    },
-    {
-      "id": 3,
-      "listId": 1,
-      "todo": "rake leaves",
-      "complete": false
-    },
-    {
       "id": 6,
       "listId": 2,
       "todo": "write copies",
@@ -41,31 +23,49 @@
     {
       "id": 7,
       "listId": 0,
-      "todo": "wine and roses",
+      "todo": "wine",
       "complete": false
     },
     {
       "id": 8,
       "listId": 2,
-      "todo": "make bitbucket repo",
+      "todo": "make gitlab repo",
       "complete": false
     },
     {
-      "id": 9,
-      "listId": null,
-      "todo": "sweet potato fries",
+      "id": 16,
+      "listId": 0,
+      "todo": "cheese",
       "complete": false
     },
     {
-      "id": 10,
-      "listId": null,
+      "id": 18,
+      "listId": 0,
+      "todo": "beer",
+      "complete": false
+    },
+    {
+      "id": 19,
+      "listId": 1,
+      "todo": "weed garden beds",
+      "complete": false
+    },
+    {
+      "id": 20,
+      "listId": 1,
+      "todo": "rake leaves",
+      "complete": false
+    },
+    {
+      "id": 21,
+      "listId": 1,
+      "todo": "prune shrubs",
+      "complete": false
+    },
+    {
+      "id": 22,
+      "listId": 2,
       "todo": "brag to friends",
-      "complete": false
-    },
-    {
-      "id": 11,
-      "listId": null,
-      "todo": "get drunk",
       "complete": false
     }
   ]
