@@ -30,7 +30,7 @@ function handleUpdateCompleteStatus(state: ITodo[], action: TodoActions.UpdateCo
   return newState;
 }
 
-export function todosReducer(state: ITodo[], action: ListActions.All | TodoActions.All) {
+export function todosReducer(state: ITodo[] = [], action: ListActions.All | TodoActions.All) {
   switch (action.type) {
     case ListActions.FETCH_TODOS_SUCCESS:
       return action.payload;

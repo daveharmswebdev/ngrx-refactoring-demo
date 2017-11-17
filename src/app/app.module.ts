@@ -32,7 +32,7 @@ export const reducers: ActionReducerMap<IAppState> = {
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    StoreModule.forRoot( reducers, { initialState: INITIAL_STATE } ),
+    StoreModule.forRoot(reducers),
     EffectsModule.forRoot([ ListEffects, TodoEffects ]),
     StoreDevtoolsModule.instrument({ maxAge: 25 })
   ],
